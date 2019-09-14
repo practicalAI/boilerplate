@@ -1,0 +1,9 @@
+{
+  "author_name": "Goku Mohandas",
+  "author_email": "contact@practical.ai",
+  "github_username": "GokuMohandas",
+  "project_name": "Text classification",
+  "project_url": "https://practical.ai",
+  "service_name": "{{ cookiecutter.project_name.lower().replace('_','-').replace(' ', '-') }}",
+  "package_name": "{{ cookiecutter.project_name.lower().replace('-','_').replace(' ', '_') }}"
+}
