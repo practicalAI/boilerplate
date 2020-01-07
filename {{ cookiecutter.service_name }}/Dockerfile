@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 FROM ubuntu:16.04
 # FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04 for CUDA9.0
-LABEL maintainer="Goku Mohandas <contact@practical.ai>" \
+LABEL maintainer="Goku Mohandas <contact@practicalai.me>" \
     version="1.0"
 
 # ==============================================================================

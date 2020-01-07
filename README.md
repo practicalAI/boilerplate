@@ -20,33 +20,32 @@ cookiecutter gh:practicalAI/boilerplate
 ### Directory structure
 ```
 {{ cookiecutter.service_name }}/
-├── src/                                  - source files
-|   ├── api/                                - holds all API scripts
-|   |   ├── endpoints.py                      - API endpoint definitions
-|   |   ├── operations.py                     - endpoint operation
-|   |   └── utils.py                          - api utility functions
-|   ├── configs/                            - configuration files
-|   |   ├── logging.json                      - logger configuration
-|   |   ├── training.json                     - training configuration
-|   ├── data/                               - directory of datasets
-|   ├── experiments/                        - directory of experiments
-|   ├── logs/                               - directory of log files
-|   |   ├── errors/                           - error log
-|   |   ├── info/                             - info log
-|   ├── tensorboard/                        - TensorBoard events
-|   ├── tests/                              - tests
-|   |   ├── e2e/                              - integration tests
-|   |   ├── unit/                             - unit tests
-|   ├── {{ cookiecutter.package_name }}/    - ML files
-|   |   ├── data.py                           - data functions
-|   |   ├── model.py                          - model functions
-|   |   ├── predict.py                        - inference operations
-|   |   ├── train.py                          - training operations
-|   ├── application.py                      - application script
-|   ├── config.py                           - application configuration
-|   ├── requirements.txt                    - python package requirements
-|   ├── setup.py                            - custom package setup
-|   ├── wsgi.py                             - application initialization
+├── api/                                - holds all API scripts
+|   ├── endpoints.py                      - API endpoint definitions
+|   ├── operations.py                     - endpoint operation
+|   └── utils.py                          - api utility functions
+├── configs/                            - configuration files
+|   ├── logging.json                      - logger configuration
+|   ├── training.json                     - training configuration
+├── data/                               - directory of datasets
+├── experiments/                        - directory of experiments
+├── logs/                               - directory of log files
+|   ├── errors/                           - error log
+|   ├── info/                             - info log
+├── tensorboard/                        - TensorBoard events
+├── tests/                              - tests
+|   ├── e2e/                              - integration tests
+|   ├── unit/                             - unit tests
+├── {{ cookiecutter.package_name }}/    - ML files
+|   ├── data.py                           - data functions
+|   ├── model.py                          - model functions
+|   ├── predict.py                        - inference operations
+|   ├── train.py                          - training operations
+├── application.py                      - application script
+├── config.py                           - application configuration
+├── requirements.txt                    - python package requirements
+├── setup.py                            - custom package setup
+├── wsgi.py                             - application initialization
 ├── .dockerignore                         - dockerignore file
 ├── .gitignore                            - gitignore file
 ├── Dockerfile                            - Dockerfile for the application

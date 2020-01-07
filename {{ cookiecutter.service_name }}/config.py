@@ -17,14 +17,10 @@ log_config = load_json(filepath=os.path.join(CONFIGS_DIR, 'logging.json'))
 logging.config.dictConfig(log_config)
 logger = logging.getLogger('logger')
 
-# Ignore TF warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-
 
 class FlaskConfig(object):
     """Default Flask configuration."""
     SECRET_KEY = 'change-this-not-so-secret-key'
-    SEND_FILE_MAX_AGE_DEFAULT = 0  # cache busting
 
 
 class DevelopmentConfig(FlaskConfig):
@@ -38,4 +34,4 @@ class ProductionConfig(FlaskConfig):
     '''Production configuration.'''
     DEBUG = False
     HOST = '0.0.0.0'
-    PORT = 80
+    PORT = 5000
