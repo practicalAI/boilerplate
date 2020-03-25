@@ -1,1 +1,1 @@
-print("🚀 {{cookiecutter.service_name}} set up successfully!")
+print("🚀 {{cookiecutter._service_name}} set up successfully!")

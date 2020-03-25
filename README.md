@@ -9,8 +9,7 @@ cookiecutter gh:madewithml/ml-app-template
 ```
 
 ### Steps
-1. Place data in `datasets` or have it in S3, external url, etc.
-2. Add ML functionality inside `{{ cookiecutter.package_name }}`.
-3. Add API functionality inside `app.py`.
-4. Add unit tests in `tests` as you develop.
-5. Complete `README.md` with the appropriate details.
+1. Add ML functionality inside `{{ cookiecutter._package_name }}`.
+2. Add API functionality inside `app.py`.
+3. Add unit tests in `tests` as you develop.
+4. Complete `README.md` with the appropriate details.

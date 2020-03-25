@@ -1,9 +1,9 @@
 {
   "author_name": "Goku Mohandas",
   "author_email": "hello@madewithml.com",
-  "github_username": "madewithml",
+  "github_username": "GokuMohandas",
   "project_name": "Text classification",
   "project_url": "https://madewithml.com",
-  "service_name": "{{ cookiecutter.project_name.lower().replace('_','-').replace(' ', '-') }}",
-  "package_name": "{{ cookiecutter.project_name.lower().replace('-','_').replace(' ', '_') }}"
+  "_service_name": "{{ cookiecutter.project_name.lower().replace('_','-').replace(' ', '-') }}",
+  "_package_name": "{{ cookiecutter.project_name.lower().replace('-','_').replace(' ', '_') }}"
 }
