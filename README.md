@@ -9,7 +9,7 @@ cookiecutter gh:madewithml/ml-app-template
 ```
 
 ### Steps
-1. Add ML functionality inside `{{ cookiecutter._package_name }}`.
+1. Add ML functionality inside `{{ cookiecutter.package_name }}`.
 2. Add API functionality inside `app.py`.
 3. Add unit tests in `tests` as you develop.
 4. Complete `README.md` with the appropriate details.

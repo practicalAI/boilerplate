@@ -7,7 +7,7 @@ RUN pip install -r requirements.txt
 
 # Copy
 COPY experiments experiments
-COPY {{ cookiecutter._package_name }} {{ cookiecutter._package_name }}
+COPY {{ cookiecutter.package_name }} {{ cookiecutter.package_name }}
 COPY app.py app.py
 COPY config.py config.py
 COPY logging.json logging.json

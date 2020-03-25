@@ -11,11 +11,11 @@ pip install -r requirements.txt
 
 ## Training
 ```bash
-python {{ cookiecutter._package_name }}/train.py
+python {{ cookiecutter.package_name }}/train.py
 ```
 ## Inference via scripts
 ```bash
-python {{ cookiecutter._package_name }}/predict.py
+python {{ cookiecutter.package_name }}/predict.py
 ```
 
 ## Endpoints
@@ -57,16 +57,16 @@ pytest
 ## Docker
 1. Build image
 ```bash
-docker build -t {{ cookiecutter._service_name }}:latest -f Dockerfile .
+docker build -t {{ cookiecutter.service_name }}:latest -f Dockerfile .
 ```
 2. Run container
 ```bash
-docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter._service_name }} {{ cookiecutter._service_name }}:latest
+docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter.service_name }} {{ cookiecutter.service_name }}:latest
 ```
 
 ## Directory structure
 ```
-{{ cookiecutter._service_name }}/
+{{ cookiecutter.service_name }}/
 ├── datasets/                           - datasets
 ├── experiments/                        - experiment directories
 ├── logs/                               - directory of log files
@@ -74,7 +74,7 @@ docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter._service_name }} 
 |   ├── info/                             - info log
 ├── tensorboard/                        - tensorboard logs
 ├── tests/                              - unit tests
-├── {{ cookiecutter._package_name }}/    - ml scripts
+├── {{ cookiecutter.package_name }}/    - ml scripts
 |   ├── data.py                           - data processing
 |   ├── models.py                         - model architectures
 |   ├── predict.py                        - inference script
@@ -97,7 +97,7 @@ docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter._service_name }} 
 
 ## Overfit to small subset
 ```
-python {{ cookiecutter._service_name }}/train.py --overfit
+python {{ cookiecutter.service_name }}/train.py --overfit
 ```
 
 ## Experiments
@@ -107,17 +107,17 @@ python {{ cookiecutter._service_name }}/train.py --overfit
 ## Helpful docker commands
 • Build image
 ```
-docker build -t {{ cookiecutter._service_name }}:latest -f Dockerfile .
+docker build -t {{ cookiecutter.service_name }}:latest -f Dockerfile .
 ```
 
 • Run container if using `CMD ["python", "app.py"]` or `ENTRYPOINT [ "/bin/sh", "entrypoint.sh"]`
 ```
-docker run -p 5000:5000 --name {{ cookiecutter._service_name }} {{ cookiecutter._service_name }}:latest
+docker run -p 5000:5000 --name {{ cookiecutter.service_name }} {{ cookiecutter.service_name }}:latest
 ```
 
 • Get inside container if using `CMD ["/bin/bash"]`
 ```
-docker run -p 5000:5000 -it {{ cookiecutter._service_name }} /bin/bash
+docker run -p 5000:5000 -it {{ cookiecutter.service_name }} /bin/bash
 ```
 
 • Other flags
