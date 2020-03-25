@@ -1,1 +1,1 @@
-# train.py - initializing and training a model.
+# train.py - initialize and train a model.

@@ -1,1 +1,1 @@
-# models.py - model architectures.
+# models.py - define model architectures.

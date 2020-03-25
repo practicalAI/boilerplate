@@ -1,1 +1,1 @@
-# predict.py - predicting (inference) inputs (single/batch).
+# predict.py - predict (infer) inputs (single/batch).

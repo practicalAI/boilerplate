@@ -1,1 +1,1 @@
-# data.py - loading, preprocessing, splitting, tokenizing, etc. of data.
+# data.py - load, preprocess, split, tokenize, etc. data.
