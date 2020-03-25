@@ -1,97 +1,21 @@
-# Mac files
+# Files
 *.DS_Store
+.vscode
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-.vscode/
-
-# Data
-data/
-media/
-logs/
-tensorboard/
-experiments/
-
-# C extensions
-*.so
-
-# Data
-*.rdb
-*.pem
-*.m4v
-*.key
-*.mov
-*.pages
-
-# Distribution / packaging
-.Python
-venv/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
+# Python
 *.pyc
+__pycache__/
+.pytest_cache/
+venv/
 
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-.hypothesis/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-
-# Flask instance folder
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
+# Data
+datasets/
+embeddings/
+experiments/
+logs/
 
 # IPython Notebook
 .ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
 
 # dotenv
 .env

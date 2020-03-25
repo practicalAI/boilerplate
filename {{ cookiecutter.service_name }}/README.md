@@ -1,67 +1,134 @@
-# {{ cookiecutter.service_name }}
+# {{ cookiecutter.project_name }}
 
-This repository was made using the [practicalAI boilerplate](https://github.com/practicalAI/boilerplate) template. Checkout this simple [text-classification](https://github.com/practicalAI/text-classification) repository for an example of how this boilerplate template can be leveraged.
+🚀 This project was created using the [ml-app-template](https://github.com/madewithml/ml-app-template) cookiecutter template. Check it out to start creating your own ML applications.
 
-### Setup
-```bash
-cd src
-virtualenv -p python3.6 venv
+## Set up
+```
+virtualenv -p python3 venv
 source venv/bin/activate
-python setup.py develop
-gunicorn --log-level ERROR --workers 1 --timeout 90 --graceful-timeout 30 --bind 0.0.0.0:5000 --access-logfile - --error-logfile - --reload wsgi
+pip install -r requirements.txt
 ```
 
-### Steps
-1. Place data in **src/data** or have it in S3, etc.
-2. Edit the *training.json* configuration file in **src/configs**.
-3. Define *requirements* and *setup.py* for your package in **src**.
-4. Edit *application.py*, *config.py*, and *wsgi.py* in **src**.
-5. Edit *endpoints.py*, *operations.py* and *utils.py* functions in **src/api**.
-6. Add ML components in **src/{{ cookiecutter.service_name }}**.
-7. Add unit and e2e tests in **src/tests**.
-
-### API endpoints
-- Health check `GET /{{ cookiecutter.service_name }}`
+## Training
 ```bash
-curl --request GET \
-     --url http://localhost:5000/{{ cookiecutter.service_name }}/health
+python {{ cookiecutter.package_name }}/train.py
+```
+## Inference via scripts
+```bash
+python {{ cookiecutter.package_name }}/predict.py
 ```
 
-### Directory structure
+## Endpoints
+```bash
+uvicorn app:app --host 0.0.0.0 --port 5000 --reload
+→ http://localhost:5000/docs
+```
+
+## Inference via API
+```python
+import json
+import requests
+
+headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
+}
+
+data = '''{"experiment_id": "latest",
+           "X": ""}'''
+
+response = requests.post('http://0.0.0.0:5000/predict',
+                         headers=headers, data=data)
+results = json.loads(response.text)
+print (json.dumps(results, indent=2, sort_keys=False))
+```
+
+## TensorBoard
+```bash
+tensorboard --logdir tensorboard
+→ http://localhost:6006/
+```
+
+## Tests
+```bash
+pytest
+```
+
+## Docker
+1. Build image
+```bash
+docker build -t {{ cookiecutter.service_name }}:latest -f Dockerfile .
+```
+2. Run container
+```bash
+docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter.service_name }} {{ cookiecutter.service_name }}:latest
+```
+
+## Directory structure
 ```
 {{ cookiecutter.service_name }}/
-├── src/                                  - source files
-|   ├── api/                                - holds all API scripts
-|   |   ├── endpoints.py                      - API endpoint definitions
-|   |   ├── operations.py                     - endpoint operation
-|   |   └── utils.py                          - api utility functions
-|   ├── configs/                            - configuration files
-|   |   ├── logging.json                      - logger configuration
-|   |   ├── training.json                     - training configuration
-|   ├── data/                               - directory of datasets
-|   ├── experiments/                        - directory of experiments
-|   ├── logs/                               - directory of log files
-|   |   ├── errors/                           - error log
-|   |   ├── info/                             - info log
-|   ├── tensorboard/                        - TensorBoard events
-|   ├── tests/                              - tests
-|   |   ├── e2e/                              - integration tests
-|   |   ├── unit/                             - unit tests
-|   ├── {{ cookiecutter.package_name }}/    - ML files
-|   |   ├── data.py                           - data functions
-|   |   ├── model.py                          - model functions
-|   |   ├── predict.py                        - inference operations
-|   |   ├── train.py                          - training operations
-|   ├── application.py                      - application script
-|   ├── config.py                           - application configuration
-|   ├── requirements.txt                    - python package requirements
-|   ├── setup.py                            - custom package setup
-|   ├── wsgi.py                             - application initialization
-├── .dockerignore                         - dockerignore file
-├── .gitignore                            - gitignore file
-├── Dockerfile                            - Dockerfile for the application
-├── CODE_OF_CONDUCT.md                    - code of conduct
-├── CODEOWNERS                            - code owner assignments
-├── LICENSE                               - license description
-└── README.md                             - repository readme
+├── datasets/                           - datasets
+├── experiments/                        - experiment directories
+├── logs/                               - directory of log files
+|   ├── errors/                           - error log
+|   ├── info/                             - info log
+├── tensorboard/                        - tensorboard logs
+├── tests/                              - unit tests
+├── {{ cookiecutter.package_name }}/    - ml scripts
+|   ├── data.py                           - data processing
+|   ├── models.py                         - model architectures
+|   ├── predict.py                        - inference script
+|   ├── train.py                          - training script
+|   ├── utils.py                          - load embeddings
+├── .dockerignore                       - files to ignore on docker
+├── .gitignore                          - files to ignore on git
+├── app.py                              - app endpoints
+├── CODE_OF_CONDUCT.md                  - code of conduct
+├── CODEOWNERS                          - code owner assignments
+├── config.py                           - configuration
+├── CONTRIBUTING.md                     - contributing guidelines
+├── Dockerfile                          - dockerfile to containerize app
+├── LICENSE                             - license description
+├── logging.json                        - logger configuration
+├── README.md                           - this README
+├── requirements.txt                    - requirements
+└── utilities.py                        - utilities
+```
+
+## Overfit to small subset
+```
+python {{ cookiecutter.service_name }}/train.py --overfit
+```
+
+## Experiments
+```
+```
+
+## Helpful docker commands
+• Build image
+```
+docker build -t {{ cookiecutter.service_name }}:latest -f Dockerfile .
+```
+
+• Run container if using `CMD ["python", "app.py"]` or `ENTRYPOINT [ "/bin/sh", "entrypoint.sh"]`
+```
+docker run -p 5000:5000 --name {{ cookiecutter.service_name }} {{ cookiecutter.service_name }}:latest
+```
+
+• Get inside container if using `CMD ["/bin/bash"]`
+```
+docker run -p 5000:5000 -it {{ cookiecutter.service_name }} /bin/bash
+```
+
+• Other flags
+```
+-d: detached
+-ti: interative terminal
+```
+
+• Clean up
+```
+docker stop $(docker ps -a -q)     # stop all containers
+docker rm $(docker ps -a -q)       # remove all containers
+docker rmi $(docker images -a -q)  # remove all images
 ```

@@ -1,16 +1,2 @@
-# @{{ cookiecutter.github_username }} is the code owner for
-# document_classification and should review any PRs
+# @{{ cookiecutter.github_username }} is the global code owner
 * @{{ cookiecutter.github_username }}
-
-configs/                        @{{ cookiecutter.github_username }}
-data/                       @{{ cookiecutter.github_username }}
-{{ cookiecutter.package_name }}/  @{{ cookiecutter.github_username }}
-.dockerignore                   @{{ cookiecutter.github_username }}
-.gitignore                      @{{ cookiecutter.github_username }}
-CODE_OF_CONDUCT.md              @{{ cookiecutter.github_username }}
-CODEOWNERS                      @{{ cookiecutter.github_username }}
-Dockerfile                      @{{ cookiecutter.github_username }}
-LICENSE                         @{{ cookiecutter.github_username }}
-README.md                       @{{ cookiecutter.github_username }}
-requirements.txt                @{{ cookiecutter.github_username }}
-setup.py                        @{{ cookiecutter.github_username }}

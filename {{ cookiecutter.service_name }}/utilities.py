@@ -1,13 +1,32 @@
 import os
 from datetime import datetime
-from flask import jsonify
-from flask import make_response
-from flask import request
 from functools import wraps
 from http import HTTPStatus
+import json
+import shutil
+
+
+def create_dirs(dirpath):
+    """Creating directories."""
+    if not os.path.exists(dirpath):
+        os.makedirs(dirpath)
+
+
+def load_json(filepath):
+    """Load a json file."""
+    with open(filepath, "r") as fp:
+        json_obj = json.load(fp)
+    return json_obj
+
+
+def save_dict(d, filepath):
+    """Save dict to a json file."""
+    with open(filepath, 'w') as fp:
+        json.dump(d, indent=2, sort_keys=False, fp=fp)
 
 
 def construct_response(f):
+    """Construct a JSON response for an endpoint's results."""
     @wraps(f)
     def wrap(*args, **kwargs):
         results = f(*args, **kwargs)
@@ -25,23 +44,5 @@ def construct_response(f):
         if results['status-code'] == HTTPStatus.OK:
             response['data'] = results['data']
 
-        # Log
-        logger.info(json.dumps(response, indent=4))
-        return make_response(jsonify(response), response['status-code'])
-
+        return response
     return wrap
-
-
-def health_check():
-    """Health check."""
-    # Health check operations
-    pass
-
-    # Results
-    results = {
-        'message': HTTPStatus.OK.phrase,
-        'status-code': HTTPStatus.OK,
-        'data': {}
-    }
-
-    return results

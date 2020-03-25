@@ -1,71 +1,20 @@
-# ==============================================================================
-# 🐳 Dockerfile
-# ------------------------------------------------------------------------------
-FROM ubuntu:16.04
-# FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04 for CUDA9.0
-LABEL maintainer="Goku Mohandas <contact@practicalai.me>" \
-    version="1.0"
+FROM python:3.6-slim
 
-# ==============================================================================
-# 🚀 Initialize
-# ------------------------------------------------------------------------------
-ENV APT_INSTALL "apt-get install -y --no-install-recommends"
-ENV PIP_INSTALL "pip3.6 --no-cache-dir install --upgrade"
-RUN rm -rf /var/lib/apt/lists/* \
-    /etc/apt/sources.list.d/cuda.list \
-    /etc/apt/sources.list.d/nvidia-ml.list && \
-    apt-get update
+# Install dependencies
+# Do this first for caching
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
-# ==============================================================================
-# ⚙️ Tools
-# ------------------------------------------------------------------------------
-RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
-    build-essential \
-    ca-certificates \
-    cmake \
-    locales \
-    curl \
-    wget \
-    git \
-    vim
+# Copy
+COPY experiments experiments
+COPY {{ cookiecutter.package_name }} {{ cookiecutter.package_name }}
+COPY app.py app.py
+COPY config.py config.py
+COPY logging.json logging.json
+COPY utilities.py utilities.py
 
-# ==============================================================================
-# 🐍 Python
-# ------------------------------------------------------------------------------
-RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
-    software-properties-common \
-    && \
-    add-apt-repository ppa:deadsnakes/ppa && \
-    apt-get update && \
-    DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
-    python3.6 \
-    python3.6-dev \
-    && \
-    wget https://bootstrap.pypa.io/get-pip.py && \
-    python3.6 get-pip.py && \
-    $PIP_INSTALL \
-    pip==18.1 \
-    setuptools
+# Export ports
+EXPOSE 5000
 
-# ==============================================================================
-# 🛁 Clean up
-# ------------------------------------------------------------------------------
-RUN ldconfig && \
-    apt-get clean && \
-    apt-get autoremove && \
-    rm -rf /var/lib/apt/lists/* /tmp/* ~/*
-
-# ==============================================================================
-# 🚢 Ports
-# ------------------------------------------------------------------------------
-EXPOSE 3000
-
-# ==============================================================================
-# 📝 {{ cookiecutter.service_name }}
-# ------------------------------------------------------------------------------
-COPY src/ $PWD/src/
-WORKDIR $PWD/src/
-RUN python3.6 setup.py develop
-WORKDIR $PWD/src/{{ cookiecutter.package_name }}
-CMD /usr/bin/python3.6 /usr/local/bin/gunicorn --log-level ERROR --workers 1 --timeout 90 --graceful-timeout 30 --bind 0.0.0.0:5000 --access-logfile - --error-logfile - --reload wsgi
-#ENTRYPOINT ["tail", "-f", "/dev/null"]
+# Start app
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5000"]
