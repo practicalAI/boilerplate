@@ -9,10 +9,11 @@ __pycache__/
 venv/
 
 # Data
-datasets/
+data/
 embeddings/
 experiments/
 logs/
+tensorboard/
 
 # IPython Notebook
 .ipynb_checkpoints
