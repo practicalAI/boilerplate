@@ -75,6 +75,8 @@ docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter.service_name }} {
 ├── tensorboard/                        - tensorboard logs
 ├── tests/                              - unit tests
 ├── {{ cookiecutter.package_name }}/    - ml scripts
+|   ├── app.py                            - app endpoints
+|   ├── config.py                         - configuration
 |   ├── data.py                           - data processing
 |   ├── models.py                         - model architectures
 |   ├── predict.py                        - inference script
@@ -82,7 +84,6 @@ docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter.service_name }} {
 |   ├── utils.py                          - load embeddings
 ├── .dockerignore                       - files to ignore on docker
 ├── .gitignore                          - files to ignore on git
-├── app.py                              - app endpoints
 ├── CODE_OF_CONDUCT.md                  - code of conduct
 ├── CODEOWNERS                          - code owner assignments
 ├── config.py                           - configuration
@@ -92,7 +93,6 @@ docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter.service_name }} {
 ├── logging.json                        - logger configuration
 ├── README.md                           - this README
 ├── requirements.txt                    - requirements
-└── utilities.py                        - utilities
 ```
 
 ## Overfit to small subset

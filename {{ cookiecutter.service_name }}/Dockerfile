@@ -8,13 +8,10 @@ RUN pip install -r requirements.txt
 # Copy
 COPY experiments experiments
 COPY {{ cookiecutter.package_name }} {{ cookiecutter.package_name }}
-COPY app.py app.py
-COPY config.py config.py
 COPY logging.json logging.json
-COPY utilities.py utilities.py
 
 # Export ports
 EXPOSE 5000
 
 # Start app
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["uvicorn", "{{ cookiecutter.package_name }}.app:app", "--host", "0.0.0.0", "--port", "5000"]
