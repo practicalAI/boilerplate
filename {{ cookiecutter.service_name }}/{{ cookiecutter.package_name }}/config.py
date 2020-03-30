@@ -2,7 +2,7 @@ import os
 import logging
 import logging.config
 
-import utilities as utils
+import utils
 
 # Directories
 BASE_DIR = os.getcwd()  # project root
