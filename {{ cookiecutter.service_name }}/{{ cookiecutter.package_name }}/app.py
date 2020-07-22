@@ -6,12 +6,12 @@ from http import HTTPStatus
 import json
 from pydantic import BaseModel
 
-import config
-import utils
+from {{ cookiecutter.package_name }} import config
+from {{ cookiecutter.package_name }} import utils
 
 
 app = FastAPI(
-    title="app",
+    title="{{ cookiecutter.package_name }}",
     description="",
     version="1.0.0",
 )

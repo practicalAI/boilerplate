@@ -2,7 +2,7 @@ import os
 import logging
 import logging.config
 
-import utils
+from {{ cookiecutter.package_name }} import utils
 
 # Directories
 BASE_DIR = os.getcwd()  # project root

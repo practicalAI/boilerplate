@@ -5,7 +5,6 @@ from datetime import datetime
 from functools import wraps
 from http import HTTPStatus
 import json
-import shutil
 
 
 def create_dirs(dirpath):
