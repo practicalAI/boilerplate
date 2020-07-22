@@ -20,7 +20,7 @@ python {{ cookiecutter.package_name }}/predict.py
 
 ## Endpoints
 ```bash
-uvicorn app:app --host 0.0.0.0 --port 5000 --reload
+uvicorn {{ cookiecutter.package_name }}.app:app --host 0.0.0.0 --port 5000 --reload
 → http://localhost:5000/docs
 ```
 

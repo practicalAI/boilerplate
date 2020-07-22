@@ -9,9 +9,10 @@ cookiecutter gh:madewithml/ml-app-template
 ```
 
 ### Steps
-1. Add ML functionality inside `{{ cookiecutter.package_name }}`.
-2. Add unit tests in `tests` as you develop.
-3. Add API functionality inside `app.py`.
-4. Complete `README.md` with the appropriate details.
-5. Ensure that the `Dockerfile` is updated.
-6. Update `.gitignore` before committing to git.
+1. Update `requirements.txt` as needed.
+2. Add ML functionality inside `{{ cookiecutter.package_name }}`.
+3. Add unit tests in `tests` as you develop.
+4. Add API functionality inside `app.py`.
+5. Complete `README.md` with the appropriate details.
+6. Ensure that the `Dockerfile` is updated.
+7. Update `.gitignore` before committing to git.

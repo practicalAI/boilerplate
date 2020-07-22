@@ -9,6 +9,7 @@ from pydantic import BaseModel
 import config
 import utils
 
+
 app = FastAPI(
     title="app",
     description="",
