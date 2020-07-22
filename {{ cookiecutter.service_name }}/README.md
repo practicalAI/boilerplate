@@ -74,7 +74,7 @@ docker run -d -p 5000:5000 -p 6006:6006 --name {{ cookiecutter.service_name }} {
 |   └── info/                             - info log
 ├── tensorboard/                        - tensorboard logs
 ├── tests/                              - unit tests
-├── {{ cookiecutter.package_name }}/    - ml scripts
+├── {{ cookiecutter.package_name }}/
 |   ├── app.py                            - app endpoints
 |   ├── config.py                         - configuration
 |   ├── data.py                           - data processing
